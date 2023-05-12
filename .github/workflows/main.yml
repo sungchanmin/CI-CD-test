@@ -1,6 +1,11 @@
 # workflow의 이름
 name: Deploy yo Amazon EC2 / Spring Boot with Maven
 
+# 환경 변수 $변수명으로 사용
+env:
+  PROJECT_NAME: TestAWSCodeDeploy
+  BUCKET_NAME: chanmin-bucket-vans-test
+
 # 해당 workflow가 언제 실행될 것인지에 대한 트리거를 지정
 on:
   push:
