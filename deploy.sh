@@ -18,7 +18,7 @@ fi
 
 echo "> 새 어플리케이션 배포"
 
-JAR_NAME=$(ls $REPOSITORY/target/ | grep '.jar' | tail -n 1)
+JAR_NAME=$(ls $REPOSITORY/target/ | grep '.jar' | grep -v '.original')
 JAR_PATH=$REPOSITORY/target/$JAR_NAME
 
-nohup java -jar $JAR_PATH > /dev/null 2> /dev/null < /dev/null &
+nohup java -jar $JAR_PATH &
