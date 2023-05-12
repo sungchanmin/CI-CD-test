@@ -1,8 +1,16 @@
 version: 0.0
 os: linux
+
 files:  
-- source:  /
+  - source:  /
     destination: /home/ubuntu/applications/ExampleAwsCodeDeploy
+    overwrite: yes
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+
 hooks:
   AfterInstall:
     - location: deploy.sh
