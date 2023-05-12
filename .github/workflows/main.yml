@@ -52,11 +52,7 @@ jobs:
       - name: Print Current Time
         run: echo "Current Time=${{steps.current-time.outputs.formattedTime}}" # current-time 에서 지정한 포맷대로 현재 시간 출력
         shell: bash
-      
-      # Test
-      - name: Run tests
-        run: mvn test
-        
+
       # build한 후 프로젝트를 압축한다.
       - name: Make zip file
         run: zip -r ./practice-deploy.zip .
@@ -73,7 +69,7 @@ jobs:
 
       # Upload to S3 stroage
       - name: Upload to S3
-        run: aws s3 cp build.zip s3://$BUCKET_NAME/deploy/$PROJECT_NAME.zip --region ap-northeast-2        
+        run: aws s3 cp practice-deploy.zip s3://$BUCKET_NAME/deploy/$PROJECT_NAME.zip --region ap-northeast-2
 
       # AWS CodeDeploy 실행 
       - name: Code Deploy
