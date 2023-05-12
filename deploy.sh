@@ -1,7 +1,7 @@
 !/usr/bin/env bash
 
 REPOSITORY=/home/ubuntu/applications/ExampleAwsCodeDeploy
-APP_NAME=ExampleAwsCodeDeploy
+APP_NAME=BeginVeganBackend
 
 echo "> 현재 구동중인 애플리케이션 pid 확인"
 CURRENT_PID=$(pgrep -f $APP_NAME)
@@ -18,7 +18,7 @@ fi
 
 echo "> 새 어플리케이션 배포"
 
-JAR_NAME=$(ls $REPOSITORY/build/libs/ | grep '.jar' | tail -n 1)
-JAR_PATH=$REPOSITORY/build/libs/$JAR_NAME
+JAR_NAME=$(ls $REPOSITORY/target/ | grep '.jar' | tail -n 1)
+JAR_PATH=$REPOSITORY/target/$JAR_NAME
 
 nohup java -jar $JAR_PATH > /dev/null 2> /dev/null < /dev/null &

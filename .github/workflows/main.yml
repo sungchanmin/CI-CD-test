@@ -55,7 +55,7 @@ jobs:
 
       # build한 후 프로젝트를 압축한다.
       - name: Make zip file
-        run: zip -r ./practice-deploy.zip .
+        run: zip -r ./$PROJECT_NAME.zip .
         shell: bash
       
       # aws 인증서비스
@@ -69,7 +69,7 @@ jobs:
 
       # Upload to S3 stroage
       - name: Upload to S3
-        run: aws s3 cp practice-deploy.zip s3://$BUCKET_NAME/deploy/$PROJECT_NAME.zip --region ap-northeast-2
+        run: aws s3 cp $PROJECT_NAME.zip s3://$BUCKET_NAME/deploy/$PROJECT_NAME.zip --region ap-northeast-2
 
       # CodeDeploy에게 배포 명령을 내린다.
       - name: Code Deploy
