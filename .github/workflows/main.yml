@@ -71,6 +71,10 @@ jobs:
       - name: Upload to S3
         run: aws s3 cp practice-deploy.zip s3://$BUCKET_NAME/deploy/$PROJECT_NAME.zip --region ap-northeast-2
 
-      # AWS CodeDeploy 실행 
+      # CodeDeploy에게 배포 명령을 내린다.
       - name: Code Deploy
-        run: aws deploy create-deployment --application-name WebserviceCodeDeploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name WebserviceCodeDeployDeployGroup --s3-location bucket=$BUCKET_NAME,bundleType=zip,key=deploy/$PROJECT_NAME.zip
+        run: >
+         aws deploy create-deployment --application-name chanmin-codedeploy-app
+         --deployment-config-name CodeDeployDefault.AllAtOnce
+         --deployment-group-name chanmin-codedeploy-deployment-group
+         --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=deploy/$PROJECT_NAME.zip
