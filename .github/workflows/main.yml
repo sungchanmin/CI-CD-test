@@ -77,4 +77,4 @@ jobs:
          aws deploy create-deployment --application-name chanmin-codedeploy-app
          --deployment-config-name CodeDeployDefault.AllAtOnce
          --deployment-group-name chanmin-codedeploy-deployment-group
-         --s3-location bucket=$S3_BUCKET_NAME,bundleType=zip,key=deploy/$PROJECT_NAME.zip
+         --s3-location bucket=$BUCKET_NAME,bundleType=zip,key=deploy/$PROJECT_NAME.zip
