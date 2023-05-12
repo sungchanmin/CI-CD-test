@@ -1,5 +1,5 @@
 # workflow의 이름
-name: Java Spring Boot CI
+name: Java Spring Boot CI with Maven
 
 # 해당 workflow가 언제 실행될 것인지에 대한 트리거를 지정
 on:
@@ -51,5 +51,13 @@ jobs:
       # Test
       - name: Run tests
         run: mvn test
+        
+      # build한 후 프로젝트를 압축한다.
+      - name: Make zip file
+        run: zip -r ./practice-deploy.zip .
+        shell: bash
+        
+        
+    
 
         
