@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-APP_NAME=BeginVeganBackend
+APP_NAME=BeginVegan
 
 echo "> Check the currently running container"
 CONTAINER_ID=$(docker ps -aqf "name=$APP_NAME")
