@@ -5,11 +5,13 @@ files:
   - source:  /
     destination: /home/ubuntu/applications/ExampleAwsCodeDeploy
     overwrite: yes
+
 permissions:
-  - object: /
-    pattern: "**"
-    owner: ubuntu
-    group: ubuntu
+  - object: /home/ubuntu/applications/ExampleAwsCodeDeploy
+    owner: root
+    group: root
+    mod: 755
+
 
 hooks:
   AfterInstall:
