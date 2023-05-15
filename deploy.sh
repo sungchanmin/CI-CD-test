@@ -14,11 +14,12 @@ else
   docker rm "$CONTAINER_ID"
 fi
 
+echo "> Remove previous Docker image"
+docker rmi "$APP_NAME:previous"
+
 echo "> Build Docker image"
 docker build -t "$APP_NAME" .
 
 echo "> Run the Docker container"
 docker run -d -p 3000:8080 --name "$APP_NAME" "$APP_NAME"
 
-echo "> Remove previous Docker image"
-docker rmi "$APP_NAME:previous"
