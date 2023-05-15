@@ -1,4 +1,4 @@
-!/usr/bin/env bash
+#!/usr/bin/env bash
 APP_NAME=BeginVeganBackend
 
 echo "> Check the currently running container"
@@ -18,8 +18,7 @@ echo "> Build Docker image"
 docker build -t "$APP_NAME" .
 
 echo "> Run the Docker container"
-docker run -d -p 3000:3000 --name "$APP_NAME" "$APP_NAME"
+docker run -d -p 3000:8080 --name "$APP_NAME" "$APP_NAME"
 
-Optionally, you can remove the previous Docker image
 echo "> Remove previous Docker image"
 docker rmi "$APP_NAME:previous"
