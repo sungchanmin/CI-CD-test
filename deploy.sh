@@ -1,24 +1,25 @@
 !/usr/bin/env bash
-
-REPOSITORY=/home/ubuntu/applications/ExampleAwsCodeDeploy
 APP_NAME=BeginVeganBackend
 
-echo "> 현재 구동중인 애플리케이션 pid 확인"
-CURRENT_PID=$(pgrep -f $APP_NAME)
-echo "$CURRENT_PID"
+echo "> Check the currently running container"
+CONTAINER_ID=$(docker ps -aqf "name=$APP_NAME")
+echo "$CONTAINER_ID"
 
-if [ -z $CURRENT_PID ]
+if [ -z "$CONTAINER_ID" ];
 then
-  echo "> 실행중인 해당 애플리케이션이 없습니다. "
+  echo "> No such container is running."
 else
-  echo "> kill -9 $CURRENT_PID"
-  kill -15 $CURRENT_PID
-  sleep 5
+  echo "> Stop and remove container: $CONTAINER_ID"
+  docker stop "$CONTAINER_ID"
+  docker rm "$CONTAINER_ID"
 fi
 
-echo "> 새 어플리케이션 배포"
+echo "> Build Docker image"
+docker build -t "$APP_NAME" .
 
-JAR_NAME=$(ls $REPOSITORY/target/ | grep '.jar' | grep -v '.original')
-JAR_PATH=$REPOSITORY/target/$JAR_NAME
+echo "> Run the Docker container"
+docker run -d -p 3000:3000 --name "$APP_NAME" "$APP_NAME"
 
-nohup java -jar $JAR_PATH &
+Optionally, you can remove the previous Docker image
+echo "> Remove previous Docker image"
+docker rmi "$APP_NAME:previous"
