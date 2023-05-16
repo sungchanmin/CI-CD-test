@@ -4,12 +4,12 @@ os: linux
 files:  
   - source:  /
     destination: /home/ubuntu/applications/ExampleAwsCodeDeploy
-    overwrite: yes
+    overwrite: true
 
 permissions:
   - object: /
     owner: ubuntu
-    group: ubuntu
+    group: free
 
 
 hooks:
