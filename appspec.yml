@@ -7,10 +7,9 @@ files:
     overwrite: yes
 
 permissions:
-  - object: /home/ubuntu/applications/ExampleAwsCodeDeploy
-    owner: root
-    group: root
-    mod: 755
+  - object: /
+    owner: ubuntu
+    group: ubuntu
 
 
 hooks:
