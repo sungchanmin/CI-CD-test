@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 APP_NAME=begin_vegan
-
+REPOSITORY=/home/ubuntu/applications/ExampleAwsCodeDeploy
 
 echo "> Check the currently running container"
 CONTAINER_ID=$(docker ps -aqf "name=$APP_NAME")
@@ -19,7 +19,7 @@ echo "> Remove previous Docker image"
 docker rmi "$APP_NAME"
 
 echo "> Build Docker image"
-docker build -t "$APP_NAME" .
+docker build -t "$APP_NAME" "$REPOSITORY"
 
 echo "> Run the Docker container"
 docker run -d -p 3000:8080 --name "$APP_NAME" "$APP_NAME"
