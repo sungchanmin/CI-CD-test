@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+!/usr/bin/env bash
 APP_NAME=begin_vegan
 
 echo "> Check the currently running container"
