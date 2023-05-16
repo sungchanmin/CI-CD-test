@@ -1,19 +1,18 @@
 version: 0.0
 os: linux
 
-files:  
+files:
   - source:  /
     destination: /home/ubuntu/applications/ExampleAwsCodeDeploy
-    overwrite: true
-
+    overwrite: yes
 permissions:
   - object: /
+    pattern: "**"
     owner: ubuntu
-    group: free
-
+    group: ubuntu
 
 hooks:
   AfterInstall:
     - location: deploy.sh
-      timeout: 1000
+      timeout: 500
       runas : root
